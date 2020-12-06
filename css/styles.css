@@ -7,7 +7,6 @@
 body {
 	/*formatting text*/
 	font-size: 100%;
-	font-family: "Montserrat", Georgia, serif;
     color: #000000;
 
     line-height: 2;
@@ -53,7 +52,7 @@ Card styling
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card >* {
-    padding: 20px;
+    padding: 15px;
 }
 .card span {
     display: block;
@@ -100,8 +99,19 @@ Card styling
 
     margin-top: 20px;
 }
-/*Button styling*/
-.card button {
+/*Input styling*/
+.new-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-top: rgba(188, 103, 44, 0.1) solid 1px;
+}
+.card label {
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+}
+.card [type="text"], [type="date"] {
     padding: 5px 8px;
     border-radius: 6px;
     border: rgba(188, 103, 44, 0.5) solid 1px;
@@ -109,14 +119,27 @@ Card styling
     font-family: 'Courier New', Courier, monospace;
     
 }
-.card button:hover {
+.card [type="text"]:hover {
     background-color:  rgba(188, 103, 44, 0.5);
 }
-#locationBtn {
-    float: left;
+.card [type="text"]:focus {
+    background-color:  rgba(188, 103, 44, 0.1);
+    outline: none;
 }
-#dateBtn {
-    float: right;
+
+
+/*
+===============================================================================
+Date picker
+*/
+[type="date"] {
+    background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
 
 /*
