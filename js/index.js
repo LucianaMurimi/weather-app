@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //1. Get the device location:
 //2. Get the date & time:
 getDateTime();
+setInterval(getDateTime, 1000);
 //3. Get the weather:
 
 });

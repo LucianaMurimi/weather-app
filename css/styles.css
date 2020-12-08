@@ -113,7 +113,7 @@ Card styling
     flex-direction: row;
     justify-content: space-between;
 
-    border-top: rgba(188, 103, 44, 0.1) solid 1px;
+    border-top: rgba(188, 103, 44, 0.2) solid 1px;
 }
  @media screen and (max-width: 1000px) {
 	.new-inputs div{
