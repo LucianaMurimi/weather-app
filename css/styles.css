@@ -10,8 +10,10 @@ body {
     color: #000000;
 
     line-height: 2;
-    
-    background-color: #fffaf7; 
+    background-image: url(/images/citybg.jpeg);
+    background-size: cover;
+    backdrop-filter: Blur(5px);
+    /* background-color: #fffaf7;  */
 }
 /*
 ===============================================================================
@@ -83,7 +85,7 @@ Card styling
     font-family: 'Courier New', Courier, monospace;
 }
 #temp {
-    font-size: 1.2em;
+    font-size: 4em;
     font-weight: bold;
     color: #002447;
 }
