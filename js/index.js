@@ -13,6 +13,7 @@ function getWeatherInfo (query) {
     })
     .then(/*function to display search results will be here*/)
 }
+
 /*-----------------------------------------------------------------------------
 LOCATION*/
 function getLocation() {
@@ -20,17 +21,24 @@ function getLocation() {
   Check if Geolocation is supported
     If supported, run the getCurrentPosition() method. If not, display an error message to the user
     If the getCurrentPosition() method is successful, it returns a coordinates object to the function specified in the parameter (showPosition)
-    Finally, the showPosition() function outputs the Latitude and Longitude
+    Finally, the showLocation() function outputs the Latitude and Longitude
   */
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showLocation);
   } else { 
     let err = "Geolocation is not supported by this browser.";
   }
 }
-function showPosition(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
+function showLocation(position) {
+  // console.log(position.coords.latitude);
+  // console.log(position.coords.longitude);
+
+  fetch(`http://api.positionstack.com/v1/reverse?access_key=bf46097f2a054dfb423ac19c872c683f&query=${position.coords.latitude},${position.coords.longitude}`)
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data);
+    document.getElementById('location').innerHTML = (`${data.data[0].county}, <br>${data.data[0].country_code}`);
+  });
 }
 /*-----------------------------------------------------------------------------
 DATE & TIME*/
@@ -71,6 +79,7 @@ function listenForMenuIcon(){
 document.addEventListener('DOMContentLoaded', () => {
 //1. Get the device location:
 getLocation();
+
 //2. Get the date & time:
 getDateTime();
 setInterval(getDateTime, 1000);
