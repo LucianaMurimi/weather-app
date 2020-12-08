@@ -23,7 +23,7 @@ Wrapper styling
     min-height: 100vh;
 }
 .wrapper >* {
-    padding: 10px;
+    padding: 8px;
 }
 /*
 ===============================================================================
@@ -60,26 +60,28 @@ Card styling
     display: block;
 }
 /*card sections*/
-#location {
+#location-bg {
     height: 250px;
     background: linear-gradient(
       rgba(255, 250, 247, 0.5),
       rgba(255, 250, 247, 0.5)
     ), url(../images/city.jpg) no-repeat center/cover;
     background-blend-mode: darken;
-    
-    display: flex;
+
+    border-radius: 15px 15px 0 0;
+    border-bottom: rgba(242, 220, 197, 0.3) solid 1px;
+}
+#location {
+    height: 200px;
+    display: flex; 
     flex-direction: column-reverse;
-    
+
     font-family: "Lovelyn", "Marko One", Georgia, serif;
     font-weight: bold;
     font-size: 1.8em;
 	letter-spacing: 4px; 
-	color: #fffaf7;
-    text-align: right; 
-    
-    border-radius: 15px 15px 0 0;
-    border-bottom: rgba(242, 220, 197, 0.3) solid 1px;
+    color: #fffaf7;
+    text-align: right;    
 }
 #date, #time, #temp, #weather {
     font-family: 'Courier New', Courier, monospace;
@@ -88,6 +90,7 @@ Card styling
     display:inline;
 }
 #time {
+    padding: 0 20px 0 0;
     float: right;
 }
 #temp {
@@ -107,13 +110,16 @@ Card styling
 
     margin-top: 20px;
 }
-/*Input styling*/
+/*
+===============================================================================
+Input styling
+*/
 .new-inputs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    border-top: rgba(188, 103, 44, 0.2) solid 1px;
+    border-top: rgba(188, 103, 44, 0.15) solid 1px;
 }
  @media screen and (max-width: 1000px) {
 	.new-inputs div{
@@ -166,6 +172,53 @@ Date picker
     opacity: 0;
 }
 
+/*
+===============================================================================
+Menu Icon
+*/
+.menu-icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+.menu-icon-bars {
+    width: 28px;
+    height: 2px;
+    background-color: rgba(0, 36, 71, 0.8);
+    margin: 6px 0;
+}
+@media screen and (min-width: 550px) {
+    .menu-icon-bars {
+        width: 35px;
+        height: 3px;
+    }
+}
+
+/*dropdown content (Hidden by Default) */
+.menu-icon-options {
+    display: none;
+    position: absolute;
+    background-color: #fffaf7;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 1;
+}
+/*links inside the dropdown */
+.menu-icon-options a {
+    color: #002447;
+    padding: 8px 10px;
+    text-decoration: none;
+    display: block;
+}
+.menu-icon-options a:not(firstchild) {
+    border-top: rgba(188, 103, 44, 0.1) solid 1px;
+}
+.menu-icon-options a:hover {
+    color: #bc672c;
+}
+/*show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 /*
 ===============================================================================
 CREDITS
