@@ -8,7 +8,23 @@ const Api = {
 function getWeatherInfo (query) {
   fetch(`${Api.endpoint}weather?q=${query}&units=metric&APPID=${Api.key}`)
     .then(weather => {
+      console.log(weather.json);
       return weather.json()
     })
     .then(/*function to display search results will be here*/)
 }
+
+//TIME
+function getDateTime() {
+  let dateTime = new Date();
+  document.getElementById('date').innerHTML = (`${dateTime.toDateString()}`);
+  document.getElementById('time').innerHTML = (`${dateTime.toLocaleTimeString()}`);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+//1. Get the device location:
+//2. Get the date & time:
+getDateTime();
+//3. Get the weather:
+
+});

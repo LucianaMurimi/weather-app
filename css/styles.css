@@ -10,10 +10,10 @@ body {
     color: #000000;
 
     line-height: 2;
-    background-image: url(/images/citybg.jpeg);
+    /* background-image: url(../images/citybg.jpeg);
     background-size: cover;
-    backdrop-filter: Blur(5px);
-    /* background-color: #fffaf7;  */
+    backdrop-filter: Blur(5px); */
+    background-color:  rgba(121, 197, 231, 0.4); 
 }
 /*
 ===============================================================================
@@ -54,7 +54,7 @@ Card styling
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card >* {
-    padding: 15px;
+    padding: 10px 20px;
 }
 .card span {
     display: block;
@@ -81,11 +81,17 @@ Card styling
     border-radius: 15px 15px 0 0;
     border-bottom: rgba(242, 220, 197, 0.3) solid 1px;
 }
-#date, #temp, #weather {
+#date, #time, #temp, #weather {
     font-family: 'Courier New', Courier, monospace;
 }
+#date, #time {
+    display:inline;
+}
+#time {
+    float: right;
+}
 #temp {
-    font-size: 4em;
+    font-size: 2em;
     font-weight: bold;
     color: #002447;
 }
@@ -133,7 +139,18 @@ Card styling
     background-color:  rgba(188, 103, 44, 0.1);
     outline: none;
 }
-
+.submit {
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(188, 103, 44, 0.5);
+    float: right;
+}
+.submit:hover {
+    background-color: rgba(188, 103, 44, 0.8);
+}
 
 /*
 ===============================================================================
