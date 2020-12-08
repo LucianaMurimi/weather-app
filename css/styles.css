@@ -107,6 +107,11 @@ Card styling
 
     border-top: rgba(188, 103, 44, 0.1) solid 1px;
 }
+ @media screen and (max-width: 1000px) {
+	.new-inputs div{
+        margin-left: 10px;
+    } 
+} 
 .card label {
     font-family: 'Courier New', Courier, monospace;
     display: block;
