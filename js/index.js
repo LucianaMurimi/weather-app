@@ -84,7 +84,7 @@ function showLocation(position) {
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    //document.getElementById('location').innerHTML = (`${data.data[0].region}, ${data.data[0].country_code}`);
+    //document.getElementById('location').innerHTML = (`${data.data[0].county}, ${data.data[0].country_code}`);
     getWeatherInfo(data.data[0].region);
   });
 }
