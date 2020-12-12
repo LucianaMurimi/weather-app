@@ -4,6 +4,41 @@ const Api = {
   endpoint: 'https://api.openweathermap.org/data/2.5/'
 }
 
+const search = document.getElementById('locationInput');
+
+// //google api for autocomplete location
+// let autocomplete;
+// function initMap() {
+//   autocomplete = new google.maps.places.Autocomplete(  
+//     search,
+//     {
+//       types: ['(cities)'],
+//       fields: ['place_id', 'geometry', 'name']
+//     });
+
+//     autocomplete.addListener('place_changed', onPlaceChanged);
+// }
+// function onPlaceChanged() {
+//   let place = autocomplete.getPlace();
+
+//   if (!place.geometry) {
+//     search.placeholder = 'Enter a place'
+//   } else {
+//     getWeatherInfo(place.name)
+//   }
+
+  
+// }
+
+search.addEventListener('keypress', function (event) {
+  if (event.keyCode == 13) {
+    getWeatherInfo(search.value)
+    //console.log(search.value)
+    search.value = '';
+  }
+} )
+
+
 //create a function to do a fetch and return weather.json to get an http request
 function getWeatherInfo (query) {
   fetch(`${Api.endpoint}weather?q=${query}&units=metric&APPID=${Api.key}`)
@@ -11,7 +46,19 @@ function getWeatherInfo (query) {
       console.log(weather.json);
       return weather.json()
     })
-    .then(/*function to display search results will be here*/)
+    .then(searchResults)
+}
+
+function searchResults(weather) {
+  console.log(weather);
+  let location = document.getElementById('location');
+  location.innerText =  `${weather.name}, ${weather.sys.country}`;
+
+  let temp = document.getElementById('temp');
+  temp.innerText = `${Math.round(weather.main.temp)} \u00B0C`;
+
+  let summary = document.getElementById('weather');
+  summary.innerHTML = `${weather.weather[0].description}`
 }
 
 /*-----------------------------------------------------------------------------
@@ -36,8 +83,9 @@ function showLocation(position) {
   fetch(`http://api.positionstack.com/v1/reverse?access_key=bf46097f2a054dfb423ac19c872c683f&query=${position.coords.latitude},${position.coords.longitude}`)
   .then(response => response.json())
   .then(data => {
-    // console.log(data);
-    document.getElementById('location').innerHTML = (`${data.data[0].county}, <br>${data.data[0].country_code}`);
+    console.log(data);
+    //document.getElementById('location').innerHTML = (`${data.data[0].county}, ${data.data[0].country_code}`);
+    getWeatherInfo(data.data[0].region);
   });
 }
 /*-----------------------------------------------------------------------------
@@ -71,7 +119,7 @@ function listenForMenuIcon(){
 	        openDropdown.classList.remove('show');
 	      }
 	    }
-	  }
+	  } 
   }
 }
 /*-----------------------------------------------------------------------------*/
