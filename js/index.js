@@ -31,36 +31,30 @@ const Api = {
   
 // }
 
-// search.addEventListener('keypress', function (event) {
-//   if (event.keyCode == 13) {
-//     getWeatherInfo(search.value)
-//     //console.log(search.value)
-//     search.value = '';
-//   }
-// } )
+//create a function to do a fetch and return weather.json to get an http request
+//fetches weather data using the location parameter
+function getWeatherInfo () {
+  let location = document.getElementById('locationInput').value;
+  // console.log(`${location}`)
+  fetch(`${Api.endpoint}weather?q=${location}&units=metric&APPID=${Api.key}`)
+    .then(weather => {
+      console.log(weather.json);
+      return weather.json()
+    })
+    .then(searchResults)
+}
 
+function searchResults(weather) {
+  // console.log(weather);
+  let location = document.getElementById('location');
+  location.innerHTML =  `${weather.name},<br>${weather.sys.country}`;
 
-// //create a function to do a fetch and return weather.json to get an http request
-// function getWeatherInfo (query) {
-//   fetch(`${Api.endpoint}weather?q=${query}&units=metric&APPID=${Api.key}`)
-//     .then(weather => {
-//       console.log(weather.json);
-//       return weather.json()
-//     })
-//     .then(searchResults)
-// }
+  let temp = document.getElementById('temp');
+  temp.innerHTML = `${Math.round(weather.main.temp)} \u00B0C`;
 
-// function searchResults(weather) {
-//   console.log(weather);
-//   let location = document.getElementById('location');
-//   location.innerHTML =  `${weather.name},<br>${weather.sys.country}`;
-
-//   let temp = document.getElementById('temp');
-//   temp.innerHTML = `${Math.round(weather.main.temp)} \u00B0C`;
-
-//   let summary = document.getElementById('weather');
-//   summary.innerHTML = `${weather.weather[0].description}`
-// }
+  let summary = document.getElementById('weather');
+  summary.innerHTML = `${weather.weather[0].description}`
+}
 
 /*-----------------------------------------------------------------------------
 WEATHER INFO*/

@@ -161,6 +161,9 @@ Input styling
 .submit:hover {
     background-color: rgba(188, 103, 44, 0.8);
 }
+.submit:focus {
+    outline: rgba(0, 36, 71, 0.8);
+}
 
 /*
 ===============================================================================
