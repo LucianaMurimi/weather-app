@@ -12,7 +12,7 @@ body {
     line-height: 2;
     /* background-image: url(../images/citybg.jpeg);
     background-size: cover;
-    backdrop-filter: Blur(5px); */
+    backdrop-filter: blur(5px); */
     background-color:  rgba(121, 197, 231, 0.4); 
 }
 /*
@@ -97,6 +97,10 @@ Card styling
     font-size: 2em;
     font-weight: bold;
     color: #002447;
+}
+#weather {
+    font-family: monospace;
+    color: rgba(0, 36, 71, 1);
 }
 #quote {
     font-family: "Marko One", Georgia, serif;
@@ -218,7 +222,8 @@ Menu Icon
     color: #bc672c;
 }
 /*show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {display:block}
+
 /*
 ===============================================================================
 CREDITS
