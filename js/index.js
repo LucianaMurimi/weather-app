@@ -67,6 +67,15 @@ function fetchWeather(lat, long) {
       document.getElementById('weather').innerHTML = (`${data.current.weather[0].description}`);
     })
 }
+
+function fetchDailyWeather(lat, long) {
+  fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${Api.key}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    console.log(data.daily[0].temp);
+  })
+}
 /*-----------------------------------------------------------------------------
 LOCATION*/
 function getLocation() {
@@ -93,6 +102,7 @@ function showLocation(position) {
     document.getElementById('location').innerHTML = (`${data.data[0].name},<br>${data.data[0].country_code}`);
     // getWeatherInfo(data.data[0].region);
     fetchWeather(position.coords.latitude, position.coords.longitude);
+    fetchDailyWeather(position.coords.latitude, position.coords.longitude);
   });
 }
 /*-----------------------------------------------------------------------------
@@ -146,3 +156,4 @@ getLocation();
 //4. Listen for menu Icon Click
 listenForMenuIcon();
 });
+
